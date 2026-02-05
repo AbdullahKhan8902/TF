@@ -1,26 +1,26 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Terms of Service - Telefanz",
-  description: "Telefanz Terms of Service - Read our terms and conditions for using the Telefanz platform.",
-}
+import { useLanguage } from "@/lib/language-context"
+import { allTranslations } from "@/lib/translations-all"
 
 export default function TermsOfServicePage() {
+  const { language } = useLanguage()
+  const termsT = allTranslations.termsOfUse[language as keyof typeof allTranslations.termsOfUse]
   return (
     <main className="min-h-screen bg-[#050008] text-white">
       <Header />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Telefanz Terms of Use</h1>
-          <p className="text-white/60 mb-12">Last updated: 17 July 2025</p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{termsT?.title}</h1>
+          <p className="text-white/60 mb-12">{termsT?.lastUpdated} 17 July 2025</p>
 
           <div className="prose prose-invert prose-lg max-w-none">
-            <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">General Terms – All Users</h2>
+            <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">{termsT?.generalTerms}</h2>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">1. Your Relationship with Us</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">1. {termsT?.yourRelationship}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               Welcome to Telefanz (the "Platform"), which is provided by Telefanz Portal or one of its affiliates
               ("Telefanz", "we" or "us").
@@ -37,7 +37,7 @@ export default function TermsOfServicePage() {
               carefully.
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">2. Accepting the Terms</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">2. {termsT?.acceptingTerms}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               By accessing or using our Services, you confirm that you can form a binding contract with Telefanz, that
               you accept these Terms and that you agree to comply with them. Your access to and use of our Services is
@@ -70,7 +70,7 @@ export default function TermsOfServicePage() {
               You should print off or save a local copy of the Terms for your records.
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">3. Changes to the Terms</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">3. {termsT?.changesTerms}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               We amend these Terms from time to time, for instance when we update the functionality of our Services,
               when we combine multiple apps or services operated by us or our affiliates into a single combined service
@@ -83,7 +83,7 @@ export default function TermsOfServicePage() {
               Services.
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">4. Your Account with Us</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">4. {termsT?.yourAccount}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               To access or use some of our Services, you must create an account with us. When you create this account,
               you must provide accurate and up-to-date information. It is important that you maintain and promptly
@@ -112,7 +112,7 @@ export default function TermsOfServicePage() {
               will not be able to reactivate your account or retrieve any of the content or information you have added.
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">5. Your Access to and Use of Our Services</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">5. {termsT?.accessUse}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               Your access to and use of the Services is subject to these Terms and all applicable laws and regulations.
               You may not:
@@ -208,7 +208,7 @@ export default function TermsOfServicePage() {
               and malware detection. This analysis occurs as the content is sent, received, and when it is stored.
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">6. Intellectual Property Rights</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">6. {termsT?.intellectualProperty}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               We respect intellectual property rights and ask you to do the same. As a condition of your access to and
               use of the Services, you agree not to use the Services to infringe on any intellectual property rights. We
@@ -217,7 +217,7 @@ export default function TermsOfServicePage() {
               intellectual property rights.
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">7. Content</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">7. {termsT?.content}</h3>
 
             <h4 className="text-lg font-semibold mt-6 mb-3 text-purple-300">A. Telefanz Content</h4>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">

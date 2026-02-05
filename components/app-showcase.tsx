@@ -1,31 +1,15 @@
 "use client"
 
 import Image from "next/image"
-
-const showcaseItems = [
-  {
-    image: "/images/300x650bb-20-282-29.webp",
-    title: "Endless Video Feed",
-    description: "Keep scrolling — fresh videos load nonstop.",
-  },
-  {
-    image: "/images/300x650bb-20-283-29.webp",
-    title: "Live Streaming",
-    description: "Go live and exchange gifts in real time.",
-  },
-  {
-    image: "/images/300x650bb-20-285-29.webp",
-    title: "Instant Messaging",
-    description: "Message friends easily inside the app.",
-  },
-  {
-    image: "/images/300x650bb-20-284-29.webp",
-    title: "Built-in Editor",
-    description: "Record seamlessly with pause and resume.",
-  },
-]
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation } from "@/lib/translations"
+import { allTranslations } from "@/lib/translations-all"
 
 export function AppShowcase() {
+  const { language } = useLanguage()
+  const t = getTranslation(language)
+  const showcaseData = allTranslations.appShowcase[language as keyof typeof allTranslations.appShowcase]
+  const showcaseItems = showcaseData?.items || []
   return (
     <section id="for-users" className="py-10 overflow-hidden relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_#1a0a2e_0%,_#0d0015_100%)]" />
@@ -35,13 +19,13 @@ export function AppShowcase() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 lg:mb-24">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
-            <span className="text-sm font-medium text-purple-300">For Users</span>
+            <span className="text-sm font-medium text-purple-300">{showcaseData?.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            Be entertained and inspired by a <span className="text-gradient">global community</span>
+            {showcaseData?.title} <span className="text-gradient">{showcaseData?.titleHighlight}</span>
           </h2>
           <p className="text-white/50 mt-6 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto">
-            Share your moments — there&apos;s always a place for you on Telefanz.
+            {showcaseData?.description}
           </p>
         </div>
 

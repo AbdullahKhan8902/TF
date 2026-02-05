@@ -60,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} dir="ltr">
       <body className="font-sans antialiased overflow-x-hidden">
         <LanguageProvider>
           {children}

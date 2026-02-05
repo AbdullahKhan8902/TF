@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Send, Loader2, CheckCircle, AlertCircle } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
+import { allTranslations } from "@/lib/translations-all"
 
 interface FormData {
   firstName: string
@@ -20,6 +22,9 @@ interface FormData {
 type FormStatus = "idle" | "loading" | "success" | "error"
 
 export function ContactForm() {
+  const { language } = useLanguage()
+  const contactT = allTranslations.contact[language as keyof typeof allTranslations.contact]
+  
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -79,7 +84,7 @@ export function ContactForm() {
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="firstName" className="text-white/80">
-            First Name <span className="text-purple-400">*</span>
+            {contactT?.firstName} <span className="text-purple-400">*</span>
           </Label>
           <Input
             id="firstName"
@@ -88,13 +93,13 @@ export function ContactForm() {
             required
             value={formData.firstName}
             onChange={handleChange}
-            placeholder="John"
+            placeholder={contactT?.placeholders.firstName}
             className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-purple-500 focus:ring-purple-500/20 h-12"
           />
         </div>
         <div className="space-y-2">
           <Label htmlFor="lastName" className="text-white/80">
-            Last Name <span className="text-purple-400">*</span>
+            {contactT?.lastName} <span className="text-purple-400">*</span>
           </Label>
           <Input
             id="lastName"
@@ -103,7 +108,7 @@ export function ContactForm() {
             required
             value={formData.lastName}
             onChange={handleChange}
-            placeholder="Doe"
+            placeholder={contactT?.placeholders.lastName}
             className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-purple-500 focus:ring-purple-500/20 h-12"
           />
         </div>
@@ -112,7 +117,7 @@ export function ContactForm() {
       {/* Email */}
       <div className="space-y-2">
         <Label htmlFor="email" className="text-white/80">
-          Email Address <span className="text-purple-400">*</span>
+          {contactT?.email} <span className="text-purple-400">*</span>
         </Label>
         <Input
           id="email"
@@ -121,7 +126,7 @@ export function ContactForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          placeholder="john@example.com"
+          placeholder={contactT?.placeholders.email}
           className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-purple-500 focus:ring-purple-500/20 h-12"
         />
       </div>
@@ -129,7 +134,7 @@ export function ContactForm() {
       {/* Subject */}
       <div className="space-y-2">
         <Label htmlFor="subject" className="text-white/80">
-          Subject <span className="text-purple-400">*</span>
+          {contactT?.subject} <span className="text-purple-400">*</span>
         </Label>
         <Input
           id="subject"
@@ -138,7 +143,7 @@ export function ContactForm() {
           required
           value={formData.subject}
           onChange={handleChange}
-          placeholder="How can we help you?"
+          placeholder={contactT?.placeholders.subject}
           className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-purple-500 focus:ring-purple-500/20 h-12"
         />
       </div>
@@ -146,7 +151,7 @@ export function ContactForm() {
       {/* Message */}
       <div className="space-y-2">
         <Label htmlFor="message" className="text-white/80">
-          Message <span className="text-purple-400">*</span>
+          {contactT?.message} <span className="text-purple-400">*</span>
         </Label>
         <Textarea
           id="message"
@@ -154,7 +159,7 @@ export function ContactForm() {
           required
           value={formData.message}
           onChange={handleChange}
-          placeholder="Tell us more about your inquiry..."
+          placeholder={contactT?.placeholders.message}
           rows={5}
           className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-purple-500 focus:ring-purple-500/20 resize-none"
         />
@@ -164,14 +169,14 @@ export function ContactForm() {
       {status === "success" && (
         <div className="flex items-center gap-2 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
           <CheckCircle className="w-5 h-5 text-green-400" />
-          <p className="text-green-400 text-sm">Your message has been sent successfully! We'll get back to you soon.</p>
+          <p className="text-green-400 text-sm">{contactT?.successMessage}</p>
         </div>
       )}
 
       {status === "error" && (
         <div className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20">
           <AlertCircle className="w-5 h-5 text-red-400" />
-          <p className="text-red-400 text-sm">{errorMessage}</p>
+          <p className="text-red-400 text-sm">{errorMessage || contactT?.errorMessage}</p>
         </div>
       )}
 
@@ -184,12 +189,12 @@ export function ContactForm() {
         {status === "loading" ? (
           <>
             <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-            Sending...
+            {contactT?.sending}
           </>
         ) : (
           <>
             <Send className="w-5 h-5 mr-2" />
-            Send Message
+            {contactT?.sendMessage}
           </>
         )}
       </Button>

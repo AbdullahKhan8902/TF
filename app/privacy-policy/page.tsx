@@ -1,21 +1,21 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Privacy Policy - Telefanz",
-  description: "Telefanz Privacy Policy - Learn how we collect, use, share, and protect your personal information.",
-}
+import { useLanguage } from "@/lib/language-context"
+import { allTranslations } from "@/lib/translations-all"
 
 export default function PrivacyPolicyPage() {
+  const { language } = useLanguage()
+  const privacyT = allTranslations.privacyPolicy[language as keyof typeof allTranslations.privacyPolicy]
   return (
     <main className="min-h-screen bg-[#050008] text-white">
       <Header />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Telefanz Privacy Policy</h1>
-          <p className="text-white/60 mb-12">Last updated: Jul 17, 2025</p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{privacyT?.title}</h1>
+          <p className="text-white/60 mb-12">{privacyT?.lastUpdated} Jul 17, 2025</p>
 
           <div className="prose prose-invert prose-lg max-w-none">
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
               with our Platform. If you do not agree with this policy, you should not use the Platform.
             </p>
 
-            <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">What information we collect</h2>
+            <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">{privacyT?.whatWeCollect}</h2>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               We may collect the following information about you:
             </p>
@@ -188,7 +188,7 @@ export default function PrivacyPolicyPage() {
               </li>
             </ul>
 
-            <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">How we use your information</h2>
+            <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">{privacyT?.howWeUse}</h2>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               As explained below, we use your information to improve, support and administer the Platform, to allow you
               to use its functionalities, and to fulfil and enforce our Terms of Service. We may also use your
@@ -267,7 +267,7 @@ export default function PrivacyPolicyPage() {
               </li>
             </ul>
 
-            <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">How we share your information</h2>
+            <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">{privacyT?.howWeShare}</h2>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               We share your information with the following parties:
             </p>

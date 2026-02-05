@@ -34,10 +34,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }
 
   // Only render children after hydration to prevent mismatch
-  if (!isClient) {
-    return <>{children}</>
-  }
-
+  // Always provide the context so client components can consume it
+  // (we still avoid reading/writing localStorage until on the client)
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}

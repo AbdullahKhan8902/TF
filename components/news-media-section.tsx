@@ -2,6 +2,8 @@
 
 import { Newspaper, ExternalLink, Calendar } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/lib/language-context"
+import { allTranslations } from "@/lib/translations-all"
 
 const newsItems = [
   {
@@ -87,6 +89,9 @@ const newsItems = [
 ]
 
 export function NewsMediaSection() {
+  const { language } = useLanguage()
+  const newsT = allTranslations.news[language as keyof typeof allTranslations.news]
+
   return (
     <section id="news" className="mt-20 py-10 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1a0a2e_0%,_#0d0015_100%)]" />
@@ -98,13 +103,13 @@ export function NewsMediaSection() {
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 lg:mb-24">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
             <Newspaper className="w-4 h-4 text-purple-400" />
-            <span className="text-sm font-medium text-purple-300">News & Media</span>
+            <span className="text-sm font-medium text-purple-300">{newsT?.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            Telefanz in the <span className="text-gradient-purple">Headlines</span>
+            {newsT?.title} <span className="text-gradient-purple">{newsT?.titleHighlight}</span>
           </h2>
           <p className="text-white/50 mt-6 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto">
-            See what the world is saying about Telefanz and our mission to empower creators everywhere.
+            {newsT?.description}
           </p>
         </div>
 
@@ -163,7 +168,7 @@ export function NewsMediaSection() {
 
                 {/* Read more */}
                 <div className="mt-4 flex items-center gap-2 text-purple-400 group-hover:text-purple-300 transition-colors">
-                  <span className="text-sm font-medium">Read Article</span>
+                  <span className="text-sm font-medium">{newsT?.readArticle}</span>
                   <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>

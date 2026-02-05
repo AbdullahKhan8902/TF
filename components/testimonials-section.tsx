@@ -3,55 +3,15 @@
 import { Star, Quote } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 import { getTranslation } from "@/lib/translations"
-
-const testimonialData = [
-  {
-    name: "Jason Buck",
-    handle: "@BreatheFree",
-    content:
-      "Telefanz changed my life! The community is so supportive and the live streaming feature is amazing.",
-    rating: 5,
-  },
-  {
-    name: "Ari Carr",
-    handle: "@TapTricks",
-    content:
-      "As a musician, the music library feature is incredible. I can add licensed tracks to my videos without any copyright issues. Game changer!",
-    rating: 5,
-  },
-  {
-    name: "Peter Bradford",
-    handle: "@OceanTitans",
-    content:
-      "The video editor is so intuitive! I love being able to pause and resume recording. My content has never looked better.",
-    rating: 5,
-  },
-  {
-    name: "Eileen Lee",
-    handle: "@RoadSense",
-    content:
-      "Finally a social platform that prioritizes safety. I feel comfortable sharing my life here knowing my data is protected.",
-    rating: 5,
-  },
-  {
-    name: "Dominik Guzman",
-    handle: "@GreenCycleHub",
-    content:
-      "The gift system during live streams has helped me earn while doing what I love. Telefanz truly cares about creators.",
-    rating: 5,
-  },
-  {
-    name: "Dennis Cook",
-    handle: "@MightyDams",
-    content:
-      "Best app I've ever used for connecting with my audience. The chat features are seamless and the UI is beautiful.",
-    rating: 5,
-  },
-]
+import { allTranslations } from "@/lib/translations-all"
 
 export function TestimonialsSection() {
   const { language } = useLanguage()
   const t = getTranslation(language)
+  const testimonialData = (allTranslations.testimonials[language as keyof typeof allTranslations.testimonials]?.reviews || []).map((review: any) => ({
+    ...review,
+    rating: 5,
+  }))
 
   return (
     <section className="py-10 relative overflow-hidden">

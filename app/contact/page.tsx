@@ -1,14 +1,15 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ContactForm } from "@/components/contact-form"
 import { Mail, MapPin, Clock } from "lucide-react"
-
-export const metadata = {
-  title: "Contact Us - Telefanz",
-  description: "Get in touch with the Telefanz team. We'd love to hear from you.",
-}
+import { useLanguage } from "@/lib/language-context"
+import { allTranslations } from "@/lib/translations-all"
 
 export default function ContactPage() {
+  const { language } = useLanguage()
+  const contactT = allTranslations.contact[language as keyof typeof allTranslations.contact]
   return (
     <main className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -25,14 +26,13 @@ export default function ContactPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
               <Mail className="w-4 h-4 text-purple-400" />
-              <span className="text-sm font-medium text-purple-300">Get in Touch</span>
+              <span className="text-sm font-medium text-purple-300">{contactT?.badge}</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 text-balance">
-              Contact <span className="text-gradient">Us</span>
+              {contactT?.title} <span className="text-gradient">{contactT?.titleHighlight}</span>
             </h1>
             <p className="text-lg text-white/60 leading-relaxed">
-              Have a question, feedback, or just want to say hello? We'd love to hear from you. Fill out the form below
-              and we'll get back to you as soon as possible.
+              {contactT?.description}
             </p>
           </div>
 
@@ -42,7 +42,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="glass-card rounded-2xl p-6 sm:p-8">
-                <h2 className="text-2xl font-semibold text-white mb-6">Send us a message</h2>
+                <h2 className="text-2xl font-semibold text-white mb-6">{contactT?.heading}</h2>
                 <ContactForm />
               </div>
             </div>
