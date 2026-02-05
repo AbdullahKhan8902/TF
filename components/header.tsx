@@ -63,11 +63,11 @@ export function Header() {
     { href: "/news", label: t.header.news },
   ]
 
-  const languages: { code: Language; name: string }[] = [
-    { code: 'en', name: getLanguageName('en', language) },
-    { code: 'ar', name: getLanguageName('ar', language) },
-    { code: 'ru', name: getLanguageName('ru', language) },
-    { code: 'zh', name: getLanguageName('zh', language) },
+  const languages: { code: Language; name: string; flag: string }[] = [
+    { code: 'en', name: getLanguageName('en', language), flag: '🇬🇧' },
+    { code: 'ar', name: getLanguageName('ar', language), flag: '🇸🇦' },
+    { code: 'ru', name: getLanguageName('ru', language), flag: '🇷🇺' },
+    { code: 'zh', name: getLanguageName('zh', language), flag: '🇨🇳' },
   ]
 
   return (
@@ -102,23 +102,28 @@ export function Header() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="text-white/70 hover:text-white hover:bg-white/5"
+                    className="text-white/70 hover:text-white hover:bg-white/5 flex items-center gap-2"
                   >
-                    {languages.find(l => l.code === language)?.name}
-                    <ChevronDown className="w-4 h-4 ml-2" />
+                    <span className="text-lg">{languages.find(l => l.code === language)?.flag}</span>
+                    <span className="text-sm">{languages.find(l => l.code === language)?.name}</span>
+                    <ChevronDown className="w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuContent align="end" className="w-56">
                   {languages.map(lang => (
                     <DropdownMenuItem
                       key={lang.code}
                       onClick={() => setLanguage(lang.code)}
                       className={cn(
-                        "cursor-pointer",
+                        "cursor-pointer flex items-center gap-3 py-2",
                         language === lang.code && "bg-purple-500/20 text-purple-300"
                       )}
                     >
-                      {lang.name}
+                      <span className="text-lg">{lang.flag}</span>
+                      <span>{lang.name}</span>
+                      {language === lang.code && (
+                        <span className="ml-auto">✓</span>
+                      )}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
@@ -178,21 +183,28 @@ export function Header() {
                     variant="ghost"
                     className="w-full justify-between text-white/70 hover:text-white hover:bg-white/5"
                   >
-                    <span>{languages.find(l => l.code === language)?.name}</span>
+                    <span className="flex items-center gap-2">
+                      <span className="text-lg">{languages.find(l => l.code === language)?.flag}</span>
+                      <span>{languages.find(l => l.code === language)?.name}</span>
+                    </span>
                     <ChevronDown className="w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-48">
+                <DropdownMenuContent align="start" className="w-56">
                   {languages.map(lang => (
                     <DropdownMenuItem
                       key={lang.code}
                       onClick={() => setLanguage(lang.code)}
                       className={cn(
-                        "cursor-pointer",
+                        "cursor-pointer flex items-center gap-3 py-2",
                         language === lang.code && "bg-purple-500/20 text-purple-300"
                       )}
                     >
-                      {lang.name}
+                      <span className="text-lg">{lang.flag}</span>
+                      <span>{lang.name}</span>
+                      {language === lang.code && (
+                        <span className="ml-auto">✓</span>
+                      )}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
