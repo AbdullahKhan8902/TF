@@ -66,7 +66,15 @@ export function Header() {
   const languages: { code: Language; name: string; flag: string }[] = [
     { code: 'en', name: getLanguageName('en', language), flag: '🇬🇧' },
     { code: 'ar', name: getLanguageName('ar', language), flag: '🇸🇦' },
+    { code: 'de', name: getLanguageName('de', language), flag: '🇩🇪' },
+    { code: 'el', name: getLanguageName('el', language), flag: '🇬🇷' },
+    { code: 'es', name: getLanguageName('es', language), flag: '🇪🇸' },
+    { code: 'fr', name: getLanguageName('fr', language), flag: '🇫🇷' },
+    { code: 'hi', name: getLanguageName('hi', language), flag: '🇮🇳' },
+    { code: 'it', name: getLanguageName('it', language), flag: '🇮🇹' },
+    { code: 'pt', name: getLanguageName('pt', language), flag: '🇵🇹' },
     { code: 'ru', name: getLanguageName('ru', language), flag: '🇷🇺' },
+    { code: 'tr', name: getLanguageName('tr', language), flag: '🇹🇷' },
     { code: 'zh', name: getLanguageName('zh', language), flag: '🇨🇳' },
   ]
 
@@ -109,7 +117,7 @@ export function Header() {
                     <ChevronDown className="w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuContent align="end" className="w-64 max-h-96 overflow-y-auto">
                   {languages.map(lang => (
                     <DropdownMenuItem
                       key={lang.code}
@@ -190,7 +198,7 @@ export function Header() {
                     <ChevronDown className="w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-56">
+                <DropdownMenuContent align="start" className="w-64 max-h-96 overflow-y-auto">
                   {languages.map(lang => (
                     <DropdownMenuItem
                       key={lang.code}

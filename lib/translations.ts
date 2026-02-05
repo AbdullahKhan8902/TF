@@ -1,6 +1,6 @@
 import { additionalTranslations } from './translations-additional'
 
-export type Language = 'en' | 'ar' | 'ru' | 'zh'
+export type Language = 'en' | 'ar' | 'ru' | 'zh' | 'de' | 'el' | 'es' | 'fr' | 'hi' | 'it' | 'pt' | 'tr'
 
 export interface Translations {
   // Header
@@ -178,7 +178,15 @@ export interface Translations {
   language: {
     english: string
     arabic: string
+    german: string
+    greek: string
+    spanish: string
+    french: string
+    hindi: string
+    italian: string
+    portuguese: string
     russian: string
+    turkish: string
     chinese: string
   }
 }
@@ -360,7 +368,15 @@ const translations: Record<Language, Translations> = {
     language: {
       english: 'English',
       arabic: 'العربية',
+      german: 'Deutsch',
+      greek: 'Ελληνικά',
+      spanish: 'Español',
+      french: 'Français',
+      hindi: 'हिन्दी',
+      italian: 'Italiano',
+      portuguese: 'Português',
       russian: 'Русский',
+      turkish: 'Türkçe',
       chinese: '中文',
     },
   },
@@ -457,7 +473,7 @@ const translations: Record<Language, Translations> = {
       a12: 'العلامة الذهبية هي اعتراف حصري من Telefanz للمنشئين النشطين والمتسقين للغاية. لا يمكن شراؤها ويتم منحها بناءً على النشاط والتفاعل.',
       q13: 'كيف تحافظ Telefanz على سلامة المنصة؟',
       a13: 'فقط المستخدمون المتحققون يمكنهم النشر أو التفاعل، وجميع المحتوى يتم فحصه قبل النشر المباشر. تساعد سياسات الاعتدال القوية في الحفاظ على مجتمع نظيف واحترامي وخالي من الاحتيال.',
-      q14: 'ما هي ميزات الوسائط الاجتماعية المتاحة؟',
+      q14: 'ما هي ��يزات الوسائط الاجتماعية المتاحة؟',
       a14: 'يمكن لجميع المستخدمين مشاهدة الملفات والتغذيات والقصص والبث المباشر. يمكن للمستخدمين المتحققين أيضاً الإعجاب والتعليق والمشاركة والرسائل ومتابعة المنشئين حسب الفئة ونشر مقاطع الفيديو / الصور / القصص والبث المباشر وإرسال الهدايا.',
       q15: 'هل يمكنني استخدام Telefanz بلغات مختلفة؟',
       a15: 'نعم. Telefanz يدعم لغات متعددة لجعل المنصة متاحة للمستخدمين في جميع أنحاء العالم.',
@@ -508,8 +524,16 @@ const translations: Record<Language, Translations> = {
     language: {
       english: 'English',
       arabic: 'العربية',
-      russian: 'Русский',
-      chinese: '中文',
+      german: 'الألمانية',
+      greek: 'اليونانية',
+      spanish: 'الإسبانية',
+      french: 'الفرنسية',
+      hindi: 'الهندية',
+      italian: 'الإيطالية',
+      portuguese: 'البرتغالية',
+      russian: 'الروسية',
+      turkish: 'التركية',
+      chinese: 'الصينية',
     },
   },
 
@@ -656,7 +680,15 @@ const translations: Record<Language, Translations> = {
     language: {
       english: 'English',
       arabic: 'العربية',
+      german: 'Немецкий',
+      greek: 'Греческий',
+      spanish: 'Испанский',
+      french: 'Французский',
+      hindi: 'Хинди',
+      italian: 'Итальянский',
+      portuguese: 'Португальский',
       russian: 'Русский',
+      turkish: 'Турецкий',
       chinese: '中文',
     },
   },
@@ -740,7 +772,7 @@ const translations: Record<Language, Translations> = {
       q6: '什么是 Coinzz，我如何赚取它们？',
       a6: 'Coinzz 是 Telefanz 的应用内虚拟货币。创作者通过直播期间粉丝的礼物和平台参与来赚取 Coinzz。Coinzz 可以兑换成钱包余额并提取。Telefanz 对创作者收入不收取任何佣金。',
       q7: '直播期间礼物如何运作？',
-      a7: '在直播期间，观众可以使用 Coinzz 发送虚拟礼物（每份礼物最多 50,000 Coinzz）。创作者立即收到这些礼物，稍后可以兑现。',
+      a7: '在直播期间，观众可以使用 Coinzz 发送虚拟礼物（每份礼物最多 50,000 Coinzz）���创作者立即收到这些礼物，稍后可以兑现。',
       q8: 'Telefanz 对创作者收取佣金吗？',
       a8: '否。Telefanz 对礼物或收集的 Coinzz 不收取任何平台佣金。仅适用标准 Apple App Store 和 Google Play Store 费用。',
       q9: '我如何找到我感兴趣的内容？',
@@ -804,7 +836,15 @@ const translations: Record<Language, Translations> = {
     language: {
       english: 'English',
       arabic: 'العربية',
+      german: '德语',
+      greek: '希腊语',
+      spanish: '西班牙语',
+      french: '法语',
+      hindi: '印地语',
+      italian: '意大利语',
+      portuguese: '葡萄牙语',
       russian: 'Русский',
+      turkish: '土耳其语',
       chinese: '中文',
     },
   },
@@ -815,5 +855,19 @@ export function getTranslation(language: Language): Translations {
 }
 
 export function getLanguageName(language: Language, currentLanguage: Language): string {
-  return getTranslation(currentLanguage).language[language === 'en' ? 'english' : language === 'ar' ? 'arabic' : language === 'ru' ? 'russian' : 'chinese']
+  const languageNames: Record<Language, keyof Translations['language']> = {
+    en: 'english',
+    ar: 'arabic',
+    de: 'german',
+    el: 'greek',
+    es: 'spanish',
+    fr: 'french',
+    hi: 'hindi',
+    it: 'italian',
+    pt: 'portuguese',
+    ru: 'russian',
+    tr: 'turkish',
+    zh: 'chinese',
+  }
+  return getTranslation(currentLanguage).language[languageNames[language]]
 }

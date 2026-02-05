@@ -19,7 +19,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setIsClient(true)
     const savedLanguage = localStorage.getItem('language') as Language | null
-    if (savedLanguage && ['en', 'ar', 'ru', 'zh'].includes(savedLanguage)) {
+    if (savedLanguage && ['en', 'ar', 'ru', 'zh', 'de', 'el', 'es', 'fr', 'hi', 'it', 'pt', 'tr'].includes(savedLanguage)) {
       setLanguageState(savedLanguage)
       document.documentElement.lang = savedLanguage
       // Keep layout direction consistent (LTR) for all languages
