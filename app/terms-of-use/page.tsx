@@ -64,16 +64,10 @@ export default function TermsOfServicePage() {
               {termsT?.p12}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We reserve the right to disable your user account at any time, including if you have failed to comply with
-              any of the provisions of these Terms, or if activities occur on your account which, in our sole
-              discretion, would or might cause damage to or impair the Services or infringe or violate any third-party
-              rights, or violate any applicable laws or regulations.
+              {termsT?.disableAccount}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              If you no longer want to use our Services again, and would like your account deleted, contact us at
-              support@telefanz.com or you may delete it yourself from your settings in the apps. We will provide you
-              with further assistance and guide you through the process. Once you choose to delete your account, you
-              will not be able to reactivate your account or retrieve any of the content or information you have added.
+              {termsT?.deleteAccount}
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">5. {termsT?.accessUse}</h3>
@@ -81,8 +75,7 @@ export default function TermsOfServicePage() {
               {termsT?.p13}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              Your access to and use of the Services is subject to these Terms and all applicable laws and regulations.
-              You may not:
+              {termsT?.accessLaws}
             </p>
             <ul className="list-disc pl-6 text-white/80 space-y-2 mb-4 text-justify">
               <li>
@@ -163,16 +156,10 @@ export default function TermsOfServicePage() {
               </li>
             </ul>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              In addition to the above, your access to and use of the Services must, at all times, be compliant with our
-              Community Guidelines.
+              {termsT?.communityGuidelines}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We reserve the right, at any time and without prior notice, to remove or disable access to content at our
-              discretion for any reason or no reason. Some of the reasons we may remove or disable access to content may
-              include finding the content objectionable, in violation of these Terms or our Community Guidelines, or
-              otherwise harmful to the Services or our users. Our automated systems analyze your content to provide you
-              personally relevant product features, such as customized search results, tailored advertising, and spam
-              and malware detection. This analysis occurs as the content is sent, received, and when it is stored.
+              {termsT?.removeContent}
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">6. {termsT?.intellectualProperty}</h3>
@@ -192,73 +179,29 @@ export default function TermsOfServicePage() {
               {termsT?.p15}
             </p>
 
-            <h4 className="text-lg font-semibold mt-6 mb-3 text-purple-300">A. Telefanz Content</h4>
+            <h4 className="text-lg font-semibold mt-6 mb-3 text-purple-300">{termsT?.telefanzContent}</h4>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              As between you and Telefanz, all content, software, images, text, graphics, illustrations, logos, patents,
-              trademarks, service marks, copyrights, photographs, audio, videos, music on and "look and feel" of the
-              Services, and all intellectual property rights related thereto (the "Telefanz Content"), are either owned
-              or licensed by Telefanz, it being understood that you or your licensors will own any User Content (as
-              defined below) you upload or transmit through the Services. Use of the Telefanz Content or materials on
-              the Services for any purpose not expressly permitted by these Terms is strictly prohibited. Such content
-              may not be downloaded, copied, reproduced, distributed, transmitted, broadcast, displayed, sold, licensed
-              or otherwise exploited for any purpose whatsoever without our or, where applicable, our licensors' prior
-              written consent. We and our licensors reserve all rights not expressly granted in and to their content.
+              {termsT?.contentOwnership}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              You acknowledge and agree that we may generate revenues, increase goodwill or otherwise increase our value
-              from your use of the Services, including, by way of example and not limitation, through the sale of
-              advertising, sponsorships, promotions, usage data and Gifts and except as specifically permitted by us in
-              these Terms or in another agreement you enter into with us, you will have no right to share in any such
-              revenue, goodwill or value whatsoever. You further acknowledge that, except as specifically permitted by
-              us in these Terms or in another agreement you enter into with us, you (i) have no right to receive any
-              income or other consideration from any User Content (defined below) or your use of any musical works,
-              sound recordings or audio-visual clips made available to you on or through the Services, including in any
-              User Content created by you, and (ii) are prohibited from exercising any rights to monetize or obtain
-              consideration from any User Content within the Services or on any third party service (e.g., you cannot
-              claim User Content that has been uploaded to a social media platform such as YouTube for monetization).
+              {termsT?.noMonetization}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              Subject to the terms and conditions of the Terms, you are hereby granted a non-exclusive, limited,
-              non-transferable, non-sublicensable, revocable, worldwide license to access and use the Services,
-              including to download the Platform on a permitted device, and to access the Telefanz Content solely for
-              your personal, non-commercial use through your use of the Services and solely in compliance with these
-              Terms. Telefanz reserves all rights not expressly granted herein in the Services and the Telefanz Content.
-              You acknowledge and agree that Telefanz may terminate this license at any time for any reason or no
-              reason.
+              {termsT?.restrictedLicense}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 uppercase font-semibold text-justify">
-              NO RIGHTS ARE LICENSED WITH RESPECT TO SOUND RECORDINGS AND THE MUSICAL WORKS EMBODIED THEREIN THAT ARE
-              MADE AVAILABLE FROM OR THROUGH THE SERVICE.
+              {termsT?.soundRecordings}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              You acknowledge and agree that when you view content provided by others on the Services, you are doing so
-              at your own risk. The content on our Services is provided for general information only. It is not intended
-              to amount to advice on which you should rely. You must obtain professional or specialist advice before
-              taking, or refraining from, any action on the basis of the content on our Services.
+              {termsT?.contentRisk}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We make no representations, warranties or guarantees, whether express or implied, that any Telefanz
-              Content (including User Content) is accurate, complete or up to date. Where our Services contain links to
-              other sites and resources provided by third parties, these links are provided for your information only.
-              We have no control over the contents of those sites or resources. Such links should not be interpreted as
-              approval by us of those linked websites or information you may obtain from them. You acknowledge that we
-              have no obligation to pre-screen, monitor, review, or edit any content posted by you and other users on
-              the Services (including User Content).
+              {termsT?.noWarranties}
             </p>
 
-            <h4 className="text-lg font-semibold mt-6 mb-3 text-purple-300">B. User-Generated Content</h4>
+            <h4 className="text-lg font-semibold mt-6 mb-3 text-purple-300">{termsT?.userGeneratedContent}</h4>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              Users of the Services may be permitted to upload, post or transmit (such as via a stream) or otherwise
-              make available content through the Services including, without limitation, any text, photographs, user
-              videos, sound recordings and the musical works embodied therein, including videos that incorporate locally
-              stored sound recordings from your personal music library and ambient noise ("User Content"). Users of the
-              Services may also extract all or any portion of User Content created by another user to produce additional
-              User Content, including collaborative User Content with other users, that combine and intersperse User
-              Content generated by more than one user. Users of the Services may also overlay music, graphics, stickers,
-              Virtual Items and other elements provided by Telefanz onto this User Content and transmit this User
-              Content through the Services. The information and materials in the User Content, including User Content,
-              have not been verified or approved by us. The views expressed by other users on the Services (including
-              through use of the virtual gifts) do not represent our views or values.
+              {termsT?.userContentDef}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               Whenever you access or use a feature that allows you to upload or transmit User Content through the

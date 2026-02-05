@@ -60,59 +60,30 @@ export default function PrivacyPolicyPage() {
               <strong>{privacyT?.surveys}</strong> {privacyT?.surveysDesc}
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">Automatically Collected Information</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">{privacyT?.autoCollectedTitle}</h3>
 
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Usage Information.</strong> We collect information regarding your use of the Platform, e.g., how
-              you engage with the Platform, including how you interact with content we show to you, the advertisements
-              you view, videos you watch and problems encountered, browsing and search history, the content you like,
-              the content you save to 'My Favourites', the users you follow and how you engage with mutual followers.
+              <strong>{privacyT?.usageInfo}</strong> {privacyT?.usageInfoDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Inferred Information.</strong> We also infer your attributes, including your interests, gender and
-              age range for the purpose of personalising content.
+              <strong>{privacyT?.inferredInfo}</strong> {privacyT?.inferredInfoDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Technical Information we collect about you.</strong> We collect certain information about the
-              device you use to access the Platform, such as your IP address, user agent, mobile carrier, time zone
-              settings, identifiers for advertising purposes, model of your device, the device system, network type,
-              device IDs, your screen resolution and operating system, app and file names and types, keystroke patterns
-              or rhythms, battery state, audio settings and connected audio devices. Where you log-in from multiple
-              devices, we will be able to use your profile information to identify your activity across devices. We may
-              also associate you with information collected from devices other than those you use to log-in to the
-              Platform.
+              <strong>{privacyT?.technicalInfo}</strong> {privacyT?.technicalInfoDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Location Information.</strong> We collect information about your approximate location, including
-              location information based on your SIM card and/or IP address. With your permission, we may also collect
-              precise location data (such as GPS). In addition, we collect location information (such as tourist
-              attractions, shops, or other points of interest) if you choose to add location information to your User
-              Content.
+              <strong>{privacyT?.locationInfo}</strong> {privacyT?.locationInfoDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Image and Audio Information.</strong> We may collect information about the videos, images and
-              audio that are a part of your User Content, such as identifying the objects and scenery that appear, the
-              existence and location within an image of face and body features and attributes, the nature of the audio,
-              and the text of the words spoken in your User Content. We may collect this information to enable special
-              video effects, for content moderation, for demographic classification, for content and ad recommendations,
-              and for other non-personally-identifying operations.
+              <strong>{privacyT?.imageAudio}</strong> {privacyT?.imageAudioDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Cookies.</strong> We and our service providers and business partners use cookies and other similar
-              technologies (e.g., web beacons, flash cookies, etc.) ("Cookies") to automatically collect information,
-              measure and analyse how you use the Platform, including which pages you view most often and how you
-              interact with content, enhance your experience using the Platform, improve the Platform, provide you with
-              advertising, and measure the effectiveness of advertisements and other content. We and our partners also
-              use Cookies to promote the Platform on other platforms and websites. Cookies enable the Platform to
-              provide certain features and functionality. Web beacons are very small images or small pieces of data
-              embedded in images, also known as "pixel tags" or "clear GIFs," that can recognize Cookies, the time and
-              date a page is viewed, a description of the page where the pixel tag is placed, and similar information
-              from your computer or device.
+              <strong>{privacyT?.cookies}</strong> {privacyT?.cookiesDesc}
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">Information From Other Sources</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">{privacyT?.infoFromOtherSources}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We may receive the information described in this Privacy Policy from other sources, such as:
+              {privacyT?.weReceiveInfo}
             </p>
             <ul className="list-disc pl-6 text-white/80 space-y-2 mb-4 text-justify">
               <li>
@@ -230,63 +201,44 @@ export default function PrivacyPolicyPage() {
 
             <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">{privacyT?.howWeShare}</h2>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We share your information with the following parties:
+              {privacyT?.weShareInfo}
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">Business Partners</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">{privacyT?.businessPartners}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              If you choose to register to use the Platform using your social network account details (e.g., Facebook,
-              Instagram, Google, Apple), you will provide us or allow your social network to provide us with your phone
-              number, email address, username and public profile. We will likewise share certain information with the
-              relevant social network such as your app ID, access token and the referring URL. If you choose to allow a
-              third-party service to access your account, we will share certain information about you with the third
-              party. Depending on the permissions you grant, the third party may be able to obtain your account
-              information and other information you choose to provide.
+              {privacyT?.businessPartnerText}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              Where you opt to share content on social media platforms, the video, username and accompanying text will
-              be shared on that platform or, in the case of sharing via instant messaging platforms such as WhatsApp, a
-              link to the content will be shared.
+              {privacyT?.socialShare}
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">Service Providers</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">{privacyT?.serviceProviders}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We provide information and content to service providers who support our business, such as cloud service
-              providers and providers of content moderation services to ensure that the Platform is a safe and enjoyable
-              place and service providers that assist us in marketing the Platform.
+              {privacyT?.serviceProvidersText}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Payment processors and transaction fulfilment providers:</strong> If you choose to buy Coins or
-              conduct other payment related transactions, we will share data with the relevant payment provider to
-              facilitate this transaction. For Coin transactions, we share a transaction ID to enable us to identify you
-              and credit your account with the correct value in coins once you have made the payment.
+              <strong>{privacyT?.paymentProcessors}</strong> {privacyT?.paymentProcessorsText}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Analytics providers:</strong> We use analytics providers to help us in the optimization and
-              improvement of the Platform. Our third-party analytics providers also help us serve targeted
-              advertisements.
+              <strong>{privacyT?.analyticsProviders}</strong> {privacyT?.analyticsProvidersText}
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">
-              Advertisers, Advertising Networks and Measurement Partners
+              {privacyT?.advertisers}
             </h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We share information with advertisers and third-party measurement companies to show how many and which
-              users of the Platform have viewed or clicked on an advertisement.
+              {privacyT?.advertisersText}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              If you use the Telefanz, we share information with advertising networks to display personalized
-              advertisements to you on the Telefanz app and elsewhere online. We are not responsible for the privacy
-              practices of these third parties, and the information practices of these third parties are not covered by
-              this Privacy Policy.
+              {privacyT?.advertisersDesc}
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">Independent Researchers</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">{privacyT?.researchers}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We share your information with independent researchers to facilitate research that meets certain criteria.
+              {privacyT?.researchersText}
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">Our Corporate Group</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">{privacyT?.corporateGroup}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               We may also share your information with other members, subsidiaries, or affiliates of our corporate group,
               including to provide the Platform, to improve and optimize the Platform, to prevent illegal use and to
