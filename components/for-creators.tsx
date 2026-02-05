@@ -5,35 +5,41 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { TrendingUp, Users, Crown, ArrowRight, Sparkles } from "lucide-react"
 import { getDeviceStoreLink } from "@/lib/store-links"
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation } from "@/lib/translations"
 
-const benefits = [
+const getBenefits = (t: ReturnType<typeof getTranslation>) => [
   {
     icon: Sparkles,
-    title: "We make it easy for you",
-    description: "Discover and create your own original videos & photos by providing easy-to-use tools",
+    title: t.forCreators.easyTools,
+    description: t.forCreators.easyToolsDesc,
     gradient: "from-purple-500 to-violet-500",
   },
   {
     icon: Crown,
-    title: "Main Benefit",
-    description: "Be entertained and inspired by a global community of Verified Content Creators",
+    title: t.forCreators.mainBenefit,
+    description: t.forCreators.mainBenefitDesc,
     gradient: "from-violet-500 to-purple-600",
   },
   {
     icon: Users,
-    title: "Authentic Connections",
-    description: "Develop authentic connections with your Fanz on the safest social media platform in the world",
+    title: t.forCreators.authenticity,
+    description: t.forCreators.authenticityDesc,
     gradient: "from-blue-500 to-purple-500",
   },
   {
     icon: TrendingUp,
-    title: "Every moment counts",
-    description: "Share your joy with the world on Telefanz - capture your daily moments effortlessly",
+    title: t.forCreators.moments,
+    description: t.forCreators.momentsDesc,
     gradient: "from-purple-600 to-violet-600",
   },
 ]
 
 export function ForCreators() {
+  const { language } = useLanguage()
+  const t = getTranslation(language)
+  const benefits = getBenefits(t)
+
   const handleDownloadClick = () => {
     window.open(getDeviceStoreLink(), "_blank")
   }
@@ -84,15 +90,15 @@ export function ForCreators() {
           <div className="order-1 lg:order-2 text-center md:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm ">
               <Crown className="w-4 h-4 text-purple-400" />
-              <span className="text-sm font-medium text-purple-300">For Users & Creators</span>
+              <span className="text-sm font-medium text-purple-300">{t.forCreators.badge}</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight ">
-              With Telefanz <span className="text-gradient">You Can Do More</span>
+              {t.forCreators.title} <span className="text-gradient">{t.forCreators.titleHighlight}</span>
             </h2>
 
             <p className="text-white/50 mt-6 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl">
-              You can develop authentic connections with your Fanz on the safest social media platform in the world.
+              {t.forCreators.description}
             </p>
 
                         <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mt-10">
@@ -123,7 +129,7 @@ export function ForCreators() {
                 size="lg"
                 className="bg-gradient-to-r from-purple-500 to-violet-600 text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-1 h-14 px-8 rounded-2xl group border-0"
               >
-                Download Now
+                {t.forCreators.downloadNow}
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>

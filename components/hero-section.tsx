@@ -8,9 +8,14 @@ import { STORE_LINKS } from "@/lib/store-links"
 import { FaApple } from "react-icons/fa";
 import { BiLogoPlayStore } from "react-icons/bi";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation } from "@/lib/translations";
 
 
 export function HeroSection() {
+  const { language } = useLanguage()
+  const t = getTranslation(language)
+
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 lg:px-10">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#1a0a2e_0%,_#0d0015_50%,_#050008_100%)]" />
@@ -34,17 +39,17 @@ export function HeroSection() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
               </span>
-              <span className="text-xs sm:text-sm font-medium text-purple-300">Now Available on iOS & Android</span>
+              <span className="text-xs sm:text-sm font-medium text-purple-300">{t.hero.badge}</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-              <span className="block">Social Media</span>
-              <span className="block">Made <span className="text-gradient">Better.</span></span>
+              <span className="block">{t.hero.title1}</span>
+              <span className="block">{t.hero.title2} <span className="text-gradient">{t.hero.title2Highlight}</span></span>
               
             </h1>
 
             <p className="mt-5 sm:mt-6 text-base sm:text-lg lg:text-xl text-white/60 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Your platform for exciting, spontaneous, genuine videos & photos. Watch and engage with what you like.
+              {t.hero.description}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 justify-center lg:justify-start">
@@ -56,8 +61,8 @@ export function HeroSection() {
                 <a href={STORE_LINKS.appStore} target="_blank" rel="noopener noreferrer">
                   <FaApple className="w-7! h-7!" />
                   <div className="text-left">
-                    <div className="text-[10px] sm:text-xs opacity-60 leading-none">Download on the</div>
-                    <div className="font-semibold text-sm sm:text-base leading-tight">App Store</div>
+                    <div className="text-[10px] sm:text-xs opacity-60 leading-none">{t.hero.downloadOn}</div>
+                    <div className="font-semibold text-sm sm:text-base leading-tight">{t.hero.appStore}</div>
                   </div>
                 </a>
               </Button>
@@ -70,8 +75,8 @@ export function HeroSection() {
                 <a href={STORE_LINKS.playStore} target="_blank" rel="noopener noreferrer">
                   <BiLogoPlayStore  className="w-7! h-7!" />
                   <div className="text-left">
-                    <div className="text-[10px] sm:text-xs opacity-60 leading-none">Get it on</div>
-                    <div className="font-semibold text-sm sm:text-base leading-tight">Google Play</div>
+                    <div className="text-[10px] sm:text-xs opacity-60 leading-none">{t.hero.getItOn}</div>
+                    <div className="font-semibold text-sm sm:text-base leading-tight">{t.hero.googlePlay}</div>
                   </div>
                 </a>
               </Button>
@@ -84,7 +89,7 @@ export function HeroSection() {
                 </div>
                 <div>
                   <div className="text-xl sm:text-2xl font-bold text-white">17K+</div>
-                  <div className="text-xs sm:text-sm text-white/50">Downloads</div>
+                  <div className="text-xs sm:text-sm text-white/50">{t.hero.downloads}</div>
                 </div>
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
@@ -94,7 +99,7 @@ export function HeroSection() {
                 </div>
                 <div>
                   <div className="text-xl sm:text-2xl font-bold text-white">9K+</div>
-                  <div className="text-xs sm:text-sm text-white/50">Active Users</div>
+                  <div className="text-xs sm:text-sm text-white/50">{t.hero.activeUsers}</div>
                 </div>
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
@@ -105,7 +110,7 @@ export function HeroSection() {
                 </div>
                 <div>
                   <div className="text-xl sm:text-2xl font-bold text-white">2.9K+</div>
-                  <div className="text-xs sm:text-sm text-white/50">Verified Creators</div>
+                  <div className="text-xs sm:text-sm text-white/50">{t.hero.verifiedCreators}</div>
                 </div>
               </div>
             </div>

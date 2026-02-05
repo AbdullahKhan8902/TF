@@ -6,8 +6,12 @@ import { FlowingLines } from "./wave-decoration"
 import { STORE_LINKS } from "@/lib/store-links"
 import { FaApple } from "react-icons/fa"
 import { BiLogoPlayStore } from "react-icons/bi"
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation } from "@/lib/translations"
 
 export function CtaSection() {
+  const { language } = useLanguage()
+  const t = getTranslation(language)
   return (
     <section className="py-10 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-purple-700 to-violet-800" />
@@ -35,20 +39,19 @@ export function CtaSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
             </span>
-            <span className="text-sm font-medium text-white">Join Users Worldwide</span>
+            <span className="text-sm font-medium text-white">{t.cta.badge}</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-tight leading-tight">
-            Ready to Join the{" "}
+            {t.cta.title1}{" "}
             <span className="relative inline-block">
-              <span className="relative z-10">Community?</span>
+              <span className="relative z-10">{t.cta.title2}</span>
               <span className="absolute bottom-2 left-0 right-0 h-3 sm:h-4 bg-white/20 -z-0 rounded" />
             </span>
           </h2>
 
           <p className="text-white/80 mt-6 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
-            Download Telefanz today and start connecting with millions of creators and fans around the world. Your
-            audience is waiting.
+            {t.cta.description}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center">
@@ -60,8 +63,8 @@ export function CtaSection() {
               <a href={STORE_LINKS.appStore} target="_blank" rel="noopener noreferrer">
                 <FaApple className="w-7! h-7!" />
                 <div className="text-left">
-                  <div className="text-xs opacity-70 leading-none">Download on the</div>
-                  <div className="font-semibold text-base leading-tight">App Store</div>
+                  <div className="text-xs opacity-70 leading-none">{t.cta.downloadOn}</div>
+                  <div className="font-semibold text-base leading-tight">{t.hero.appStore}</div>
                 </div>
               </a>
             </Button>
@@ -74,8 +77,8 @@ export function CtaSection() {
               <a href={STORE_LINKS.playStore} target="_blank" rel="noopener noreferrer">
                 <BiLogoPlayStore className="w-7! h-7!" fill="currentColor" />
                 <div className="text-left">
-                  <div className="text-xs opacity-70 leading-none">Get it on</div>
-                  <div className="font-semibold text-base leading-tight">Google Play</div>
+                  <div className="text-xs opacity-70 leading-none">{t.cta.getItOn}</div>
+                  <div className="font-semibold text-base leading-tight">{t.hero.googlePlay}</div>
                 </div>
               </a>
             </Button>

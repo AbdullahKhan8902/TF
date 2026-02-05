@@ -1,8 +1,10 @@
 "use client"
 
 import { Star, Quote } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation } from "@/lib/translations"
 
-const testimonials = [
+const testimonialData = [
   {
     name: "Jason Buck",
     handle: "@BreatheFree",
@@ -48,6 +50,9 @@ const testimonials = [
 ]
 
 export function TestimonialsSection() {
+  const { language } = useLanguage()
+  const t = getTranslation(language)
+
   return (
     <section className="py-10 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1a0a2e_0%,_#0d0015_100%)]" />
@@ -58,18 +63,18 @@ export function TestimonialsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 lg:mb-24">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
             <Star className="w-4 h-4 text-purple-400 fill-purple-400" />
-            <span className="text-sm font-medium text-purple-300">Testimonials</span>
+            <span className="text-sm font-medium text-purple-300">{t.testimonials.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            Loved by Creators <span className="text-gradient-purple">Worldwide</span>
+            {t.testimonials.title} <span className="text-gradient-purple">{t.testimonials.titleHighlight}</span>
           </h2>
           <p className="text-white/50 mt-6 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto">
-            See what our community has to say about their Telefanz experience.
+            {t.testimonials.description}
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
+          {testimonialData.map((testimonial, index) => (
             <div
               key={index}
               className="group relative p-6 sm:p-8 rounded-3xl glass-card hover:border-purple-500/30 transition-all duration-500 hover:-translate-y-2"

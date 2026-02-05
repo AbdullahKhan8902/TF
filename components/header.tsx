@@ -3,23 +3,31 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, LogIn } from "lucide-react"
+import { Menu, X, LogIn, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { getDeviceStoreLink } from "@/lib/store-links"
 import Image from "next/image"
 import { ComingSoonModal } from "@/components/coming-soon-modal"
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation, getLanguageName, type Language } from "@/lib/translations"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
-const navLinks = [
-  { href: "/#features", label: "Features" },
-  { href: "/#for-users", label: "For Users" },
-  { href: "/#for-creators", label: "For Creators" },
-  { href: "/news", label: "News" },
-]
+interface NavLink {
+  href: string
+  label: string
+}
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isComingSoonModalOpen, setIsComingSoonModalOpen] = useState(false)
+  const { language, setLanguage } = useLanguage()
+  const t = getTranslation(language)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +55,20 @@ export function Header() {
     setIsComingSoonModalOpen(true)
     setIsMobileMenuOpen(false) // Close mobile menu if open
   }
+
+  const navLinks: NavLink[] = [
+    { href: "/#features", label: t.header.features },
+    { href: "/#for-users", label: t.header.forUsers },
+    { href: "/#for-creators", label: t.header.forCreators },
+    { href: "/news", label: t.header.news },
+  ]
+
+  const languages: { code: Language; name: string }[] = [
+    { code: 'en', name: getLanguageName('en', language) },
+    { code: 'ar', name: getLanguageName('ar', language) },
+    { code: 'ru', name: getLanguageName('ru', language) },
+    { code: 'zh', name: getLanguageName('zh', language) },
+  ]
 
   return (
     <>
@@ -76,12 +98,37 @@ export function Header() {
             </nav>
 
             <div className="hidden lg:flex items-center gap-3">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="text-white/70 hover:text-white hover:bg-white/5"
+                  >
+                    {languages.find(l => l.code === language)?.name}
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  {languages.map(lang => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => setLanguage(lang.code)}
+                      className={cn(
+                        "cursor-pointer",
+                        language === lang.code && "bg-purple-500/20 text-purple-300"
+                      )}
+                    >
+                      {lang.name}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               <Button
                 className="bg-gradient-to-r from-purple-500 to-violet-600 text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-0.5 border-0"
                 onClick={handleSignInClick}
               >
                 <LogIn className="w-4 h-4 mr-2" />
-                Sign In
+                {t.header.signIn}
               </Button>
             </div>
 
@@ -125,12 +172,37 @@ export function Header() {
               </Link>
             ))}
             <div className="flex flex-col gap-3 pt-4 mt-2 border-t border-white/10">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-between text-white/70 hover:text-white hover:bg-white/5"
+                  >
+                    <span>{languages.find(l => l.code === language)?.name}</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {languages.map(lang => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => setLanguage(lang.code)}
+                      className={cn(
+                        "cursor-pointer",
+                        language === lang.code && "bg-purple-500/20 text-purple-300"
+                      )}
+                    >
+                      {lang.name}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               <Button
                 className="w-full h-12 bg-gradient-to-r from-purple-500 to-violet-600 text-white border-0"
                 onClick={handleSignInClick}
               >
                 <LogIn className="w-4 h-4 mr-2" />
-                Sign In
+                {t.header.signIn}
               </Button>
             </div>
           </nav>

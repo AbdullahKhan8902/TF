@@ -6,21 +6,27 @@ import { FlowingLines } from "./wave-decoration"
 import { STORE_LINKS } from "@/lib/store-links"
 import { FaApple } from "react-icons/fa";
 import { BiLogoPlayStore } from "react-icons/bi";
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation } from "@/lib/translations"
 
-const reasons = [
-  "Watch endless short videos & photos for free",
-  "Browse reels & feeds: Following, Discover, Nearby & Trending",
-  "Search verified creators across 95 profile categories",
-  "Enjoy free access to LIVE streams worldwide",
-  "Discover content in a clean, spam-free environment",
-  "Verify once with face & ID to unlock full interaction",
-  "One person = one verified account for maximum safety",
-  "Publish, comment, message & go live as a verified user",
-  "Send & receive gifts during live streams",
-  "Earn Coinzz with ZERO platform commission",
+const getReasons = (t: ReturnType<typeof getTranslation>) => [
+  t.download.reason1,
+  t.download.reason2,
+  t.download.reason3,
+  t.download.reason4,
+  t.download.reason5,
+  t.download.reason6,
+  t.download.reason7,
+  t.download.reason8,
+  t.download.reason9,
+  t.download.reason10,
 ]
 
 export function DownloadReasons() {
+  const { language } = useLanguage()
+  const t = getTranslation(language)
+  const reasons = getReasons(t)
+
   return (
     <section id="download" className="relative py-10 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#1a0a2e_0%,_#0d0015_50%,_#050008_100%)]" />
@@ -34,13 +40,13 @@ export function DownloadReasons() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <span className="inline-block px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm font-medium mb-6">
-              Get Started Today
+              {t.download.badge}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Why Download <span className="text-gradient">Telefanz</span>?
+              {t.download.title} <span className="text-gradient">{t.download.titleHighlight}</span>?
             </h2>
             <p className="text-lg sm:text-xl text-white/60 max-w-3xl mx-auto">
-              Telefanz is your platform for exciting, spontaneous, genuine videos & photos.
+              {t.download.description}
             </p>
           </div>
 
@@ -58,9 +64,9 @@ export function DownloadReasons() {
           </div>
 
           <div className="text-center">
-            <p className="text-xl sm:text-2xl font-semibold text-white mb-6">So, what are you waiting for?</p>
+            <p className="text-xl sm:text-2xl font-semibold text-white mb-6">{t.download.cta}</p>
             <p className="text-white/60 mb-8 max-w-2xl mx-auto">
-              Download the TeleFanz app today and start enjoying a world of connections easily made.
+              {t.download.ctaDesc}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -72,8 +78,8 @@ export function DownloadReasons() {
                 <a href={STORE_LINKS.appStore} target="_blank" rel="noopener noreferrer">
                   <FaApple className="w-7! h-7!" />
                   <div className="text-left">
-                    <div className="text-[10px] sm:text-xs opacity-60 leading-none">Download on the</div>
-                    <div className="font-semibold text-sm sm:text-base leading-tight">App Store</div>
+                    <div className="text-[10px] sm:text-xs opacity-60 leading-none">{t.download.downloadOn}</div>
+                    <div className="font-semibold text-sm sm:text-base leading-tight">{t.hero.appStore}</div>
                   </div>
                 </a>
               </Button>
@@ -86,8 +92,8 @@ export function DownloadReasons() {
                 <a href={STORE_LINKS.playStore} target="_blank" rel="noopener noreferrer">
                   <BiLogoPlayStore className="w-7! h-7!" fill="currentColor" />
                   <div className="text-left">
-                    <div className="text-[10px] sm:text-xs opacity-60 leading-none">Get it on</div>
-                    <div className="font-semibold text-sm sm:text-base leading-tight">Google Play</div>
+                    <div className="text-[10px] sm:text-xs opacity-60 leading-none">{t.download.getItOn}</div>
+                    <div className="font-semibold text-sm sm:text-base leading-tight">{t.hero.googlePlay}</div>
                   </div>
                 </a>
               </Button>

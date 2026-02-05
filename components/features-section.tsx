@@ -2,65 +2,71 @@
 
 import { Shield, Users, Coins, CheckCircle, Search, Globe, DollarSign, Gift } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation } from "@/lib/translations"
 
-const features = [
+const getFeatures = (t: ReturnType<typeof getTranslation>) => [
   {
     icon: Coins,
-    title: "More Earnings",
-    description: "Earn Coinzz by creating content or receiving support from your fans — your engagement turns into real value",
+    title: t.features.moreEarnings,
+    description: t.features.moreEarningsDesc,
     gradient: "from-purple-500 to-violet-600",
   },
   {
     icon: CheckCircle,
-    title: "Plus+ Verification",
-    description: "Verify your identity, choose your profile category, subscribe, and unlock full access with a trusted Blue Tick",
+    title: t.features.verification,
+    description: t.features.verificationDesc,
     gradient: "from-purple-500 to-blue-600",
   },
   {
     icon: Gift,
-    title: "Live Stream Revenue",
-    description: "Go live, receive gifts, and earn Coinzz in real time while interacting with your audience",
+    title: t.features.liveStreamRevenue,
+    description: t.features.liveStreamRevenueDesc,
     gradient: "from-violet-500 to-purple-600",
   },
   {
     icon: Shield,
-    title: "Clean Community",
-    description: "Only verified users can post or interact, creating a safer, spam-free social media environment",
+    title: t.features.cleanCommunity,
+    description: t.features.cleanCommunityDesc,
     gradient: "from-blue-500 to-cyan-600",
   },
   {
     icon: Users,
-    title: "Easy Verification",
-    description: "Quick face and ID verification ensures one real person per account and protects your identity",
+    title: t.features.easyVerification,
+    description: t.features.easyVerificationDesc,
     gradient: "from-purple-500 to-violet-500",
   },
   {
     icon: Search,
-    title: "Search By Category",
-    description: "Discover Verified Vreators across 95 profile categories and find exactly who you’re looking for",
+    title: t.features.searchByCategory,
+    description: t.features.searchByCategoryDesc,
     gradient: "from-cyan-500 to-blue-600",
   },
   {
     icon: Globe,
-    title: "Variety Matters",
-    description: "Explore diverse content from creators worldwide across multiple categories and interests",
+    title: t.features.varietyMatters,
+    description: t.features.varietyMattersDesc,
     gradient: "from-violet-500 to-purple-500",
   },
   {
     icon: DollarSign,
-    title: "Get More For Less",
-    description: "Affordable Coinzz plans with better value — support creators without overspending",
+    title: t.features.getMoreForLess,
+    description: t.features.getMoreForLessDesc,
     gradient: "from-purple-600 to-violet-600",
   },
   {
     icon: Coins,
-    title: "Earn More & More & More",
-    description: "Telefanz takes Zero Commission on creator earnings — only standard app store fees apply",
+    title: t.features.earnMore,
+    description: t.features.earnMoreDesc,
     gradient: "from-blue-600 to-purple-600",
   },
 ]
 
 export function FeaturesSection() {
+  const { language } = useLanguage()
+  const t = getTranslation(language)
+  const features = getFeatures(t)
+
   return (
     <section id="features" className="py-10 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1a0a2e_0%,_#0d0015_100%)]" />
@@ -71,14 +77,13 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 lg:mb-24">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
-            <span className="text-sm font-medium text-purple-300">What Makes us Different</span>
+            <span className="text-sm font-medium text-purple-300">{t.features.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            Your Personalized <span className="text-gradient-purple">Social Experience</span>
+            {t.features.title} <span className="text-gradient-purple">{t.features.titleHighlight}</span>
           </h2>
           <p className="text-white/50 mt-6 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto">
-            Whether you are a Celebrity, Content Creator or a Streamer that loves to share moments, there is always a
-            place for you on Telefanz.
+            {t.features.description}
           </p>
          
         </div>

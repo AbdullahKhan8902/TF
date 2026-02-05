@@ -6,24 +6,34 @@ import Link from "next/link"
 import { Instagram } from "lucide-react"
 import { getDeviceStoreLink } from "@/lib/store-links"
 import Image from "next/image"
+import { useLanguage } from "@/lib/language-context"
+import { getTranslation } from "@/lib/translations"
 
-const footerLinks = {
-  product: [
-    { label: "Features", href: "#features" },
-    { label: "For Users", href: "#for-users" },
-    { label: "For Creators", href: "#for-creators" },
-    { label: "News", href: "/news" },
-  ],
-  company: [{ label: "Contact", href: "/contact" }],
-  legal: [
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms of Use", href: "/terms-of-use" },
-  ],
+interface FooterLink {
+  label: string
+  href: string
 }
 
 const socialLinks = [{ icon: Instagram, href: "https://www.instagram.com/telefanz.official/", label: "Instagram" }]
 
 export function Footer() {
+  const { language } = useLanguage()
+  const t = getTranslation(language)
+
+  const footerLinks: Record<string, FooterLink[]> = {
+    product: [
+      { label: t.footer.features, href: "#features" },
+      { label: t.footer.forUsers, href: "#for-users" },
+      { label: t.footer.forCreators, href: "#for-creators" },
+      { label: t.footer.news, href: "/news" },
+    ],
+    company: [{ label: t.footer.contact, href: "/contact" }],
+    legal: [
+      { label: t.footer.privacyPolicy, href: "/privacy-policy" },
+      { label: t.footer.termsOfUse, href: "/terms-of-use" },
+    ],
+  }
+
   const handleDownloadClick = (e: React.MouseEvent, href: string) => {
     if (href === "download") {
       e.preventDefault()
@@ -45,7 +55,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3 group">
               <Image src="/images/logo.png" alt="Telefanz Logo" width={120} height={40} />
             </Link>
-            <p className="mt-6 text-white/40 max-w-xs text-base leading-relaxed">Social Media Made Better.</p>
+            <p className="mt-6 text-white/40 max-w-xs text-base leading-relaxed">{t.footer.tagline}</p>
 
             {/* Social links */}
             <div className="flex gap-3 mt-8">
@@ -66,7 +76,7 @@ export function Footer() {
 
           {/* Link columns */}
           <div>
-            <h4 className="font-semibold mb-4 text-white">Product</h4>
+            <h4 className="font-semibold mb-4 text-white">{t.footer.product}</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
@@ -83,7 +93,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 text-white">Company</h4>
+            <h4 className="font-semibold mb-4 text-white">{t.footer.company}</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -97,7 +107,7 @@ export function Footer() {
 
 
           <div>
-            <h4 className="font-semibold mb-4 text-white">Legal</h4>
+            <h4 className="font-semibold mb-4 text-white">{t.footer.legal}</h4>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
@@ -113,9 +123,9 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-white/30 text-sm text-center sm:text-left">
-            © Copyright {new Date().getFullYear()} All Rights Reserved by Telefanz Portal.
+            © {t.footer.allRightsReserved.replace('{year}', new Date().getFullYear().toString())}
           </p>
-          <p className="text-white/30 text-sm text-center sm:text-right">Made with love for creators everywhere.</p>
+          <p className="text-white/30 text-sm text-center sm:text-right">{t.footer.madeWith}</p>
         </div>
       </div>
     </footer>
