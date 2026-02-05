@@ -3,11 +3,11 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/lib/language-context"
-import { allTranslations } from "@/lib/translations-all"
+import { pageTranslations } from "@/lib/page-translations"
 
 export default function PrivacyPolicyPage() {
   const { language } = useLanguage()
-  const privacyT = allTranslations.privacyPolicy[language as keyof typeof allTranslations.privacyPolicy]
+  const privacyT = pageTranslations.privacyPolicy[language as keyof typeof pageTranslations.privacyPolicy]
   return (
     <main className="min-h-screen bg-[#050008] text-white">
       <Header />
@@ -19,84 +19,45 @@ export default function PrivacyPolicyPage() {
 
           <div className="prose prose-invert prose-lg max-w-none">
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              Welcome to Telefanz. This Privacy Policy applies to Telefanz services (the "Platform"), which include
-              Telefanz apps, websites, software and related services accessed via any platform or device that link to
-              this Privacy Policy. The Platform is provided and controlled by Telefanz Portal, with its registered
-              address at Dubai, United Arab Emirates ("Telefanz", "we" or "us").
+              {privacyT?.intro1}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We are committed to protecting and respecting your privacy. This Privacy Policy explains how we collect,
-              use, share, and otherwise process the personal information of users, and other individuals in connection
-              with our Platform. If you do not agree with this policy, you should not use the Platform.
+              {privacyT?.intro2}
             </p>
 
             <h2 className="text-2xl font-bold text-purple-400 mt-12 mb-6">{privacyT?.whatWeCollect}</h2>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We may collect the following information about you:
+              {privacyT?.weCollectInfo}
             </p>
 
-            <h3 className="text-xl font-semibold mt-8 mb-4">Information You Provide</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">{privacyT?.infoProvided}</h3>
 
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Your profile information.</strong> You give us information when you register on the Platform,
-              including your username, password, date of birth (where applicable), email address and/or telephone
-              number, information you disclose in your user profile, and your photograph or profile video.
+              <strong>{privacyT?.profileInfo}</strong> {privacyT?.profileInfoDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>User content.</strong> We process the content you generate on the Platform, including photographs,
-              audios and videos you upload or create, comments, hashtags, feedback, reviews, and livestreams you make,
-              and the associated metadata, such as when, where, and by whom the content was created ("User Content").
-              Even if you are not a user, information about you may appear in User Content created or published by users
-              on the Platform. We collect User Content through pre-loading at the time of creation, import, or upload,
-              regardless of whether you choose to save or upload that User Content, in order to recommend audio options
-              and provide other personalized recommendations. If you apply an effect to your User Content, we may
-              collect a version of your User Content that does not include the effect.
+              <strong>{privacyT?.userContent}</strong> {privacyT?.userContentDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Messages.</strong> We collect information you provide when you compose, send, or receive messages
-              through the Platform's messaging functionalities. They include messages you send or receive through our
-              chat functionality when communicating with merchants who sell goods to you, and your use of virtual
-              assistants when purchasing items through the Platform. That information includes the content of the
-              message and information about the message, such as when it was sent, received, or read, and message
-              participants. Please be aware that messages you choose to send to other users of the Platform will be
-              accessible by those users and that we are not responsible for the manner in which those users use or share
-              the messages.
+              <strong>{privacyT?.messages}</strong> {privacyT?.messagesDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We may access content, including text, images, and video, found in your device's clipboard, with your
-              permission. For example, if you choose to initiate content sharing with a third-party platform, or choose
-              to paste content from the clipboard into the Platform, we access this information stored in your clipboard
-              in order to fulfil your request.
+              {privacyT?.clipboard}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Purchase information.</strong> When you make a purchase or payment on or through the Platform,
-              including when you buy Telefanz Coins or purchase goods through our shopping features, we collect
-              information about the purchase or payment transaction, such as payment card information, billing,
-              delivery, and contact information, and items you purchased.
+              <strong>{privacyT?.purchase}</strong> {privacyT?.purchaseDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Your phone and social network contacts.</strong> If you choose to sync your phone contacts, we
-              will access and collect information such as names, phone numbers, and email addresses, and match that
-              information against existing users of the Platform. If you choose to share your social network contacts,
-              we will collect your public profile information as well as names and profiles of your social network
-              contacts.
+              <strong>{privacyT?.contacts}</strong> {privacyT?.contactsDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Proof of your identity or age.</strong> We sometimes ask you to provide proof of identity or age
-              in order to use certain features, such as livestream or verified accounts, or when you apply for a
-              Business Account, ensure that you are old enough to use the Platform, or in other instances where
-              verification may be required.
+              <strong>{privacyT?.identity}</strong> {privacyT?.identityDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>Information in correspondence you send to us,</strong> including when you contact us for support
-              or feedback.
+              <strong>{privacyT?.correspondence}</strong> {privacyT?.correspondenceDesc}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              <strong>
-                Information through surveys, research, promotion, contests, marketing campaigns, challenges,
-                competitions or events
-              </strong>{" "}
-              conducted or sponsored by us, in which you participate.
+              <strong>{privacyT?.surveys}</strong> {privacyT?.surveysDesc}
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">Automatically Collected Information</h3>

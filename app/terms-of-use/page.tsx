@@ -3,11 +3,11 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/lib/language-context"
-import { allTranslations } from "@/lib/translations-all"
+import { pageTranslations } from "@/lib/page-translations"
 
 export default function TermsOfServicePage() {
   const { language } = useLanguage()
-  const termsT = allTranslations.termsOfUse[language as keyof typeof allTranslations.termsOfUse]
+  const termsT = pageTranslations.termsOfUse[language as keyof typeof pageTranslations.termsOfUse]
   return (
     <main className="min-h-screen bg-[#050008] text-white">
       <Header />
@@ -22,82 +22,46 @@ export default function TermsOfServicePage() {
 
             <h3 className="text-xl font-semibold mt-8 mb-4">1. {termsT?.yourRelationship}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              Welcome to Telefanz (the "Platform"), which is provided by Telefanz Portal or one of its affiliates
-              ("Telefanz", "we" or "us").
+              {termsT?.p1}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              You are reading the terms of service (the "Terms"), which govern the relationship and serve as an
-              agreement between you and us and set forth the terms and conditions by which you may access and use the
-              Platform and our related websites, services, applications, products and content (collectively, the
-              "Services"). Our Services are provided for private, non-commercial use. For purposes of these Terms, "you"
-              and "your" means you as the user of the Services.
+              {termsT?.p2}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              The Terms form a legally binding agreement between you and us. Please take the time to read them
-              carefully.
+              {termsT?.p3}
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">2. {termsT?.acceptingTerms}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              By accessing or using our Services, you confirm that you can form a binding contract with Telefanz, that
-              you accept these Terms and that you agree to comply with them. Your access to and use of our Services is
-              also subject to our Privacy Policy and Community Guidelines, the terms of which can be found directly on
-              the Platform, or where the Platform is made available for download, on your mobile device's applicable app
-              store, and are incorporated herein by reference. By using the Services, you consent to the terms of the
-              Privacy Policy.
+              {termsT?.p4}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              If you access or use the Services from within a jurisdiction for which there are separate supplemental
-              terms, you also hereby agree to the supplemental terms applicable to users in each jurisdiction as
-              outlined below, and in the event of a conflict between the provisions of the Supplemental Terms –
-              Jurisdiction-Specific that are relevant to your jurisdiction from which you access or use the Services,
-              and the rest of these Terms, the relevant jurisdictions' Supplemental Terms – Jurisdiction-Specific will
-              supersede and control. If you do not agree to these Terms, you must not access or use our Services.
+              {termsT?.p5}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              If you are accessing or using the Services on behalf of a business or entity, then (a) "you" and "your"
-              includes you and that business or entity, (b) you represent and warrant that you are an authorized
-              representative of the business or entity with the authority to bind the entity to these Terms, and that
-              you agree to these Terms on the entity's behalf, and (c) your business or entity is legally and
-              financially responsible for your access or use of the Services as well as for the access or use of your
-              account by others affiliated with your entity, including any employees, agents or contractors.
+              {termsT?.p6}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              You can accept the Terms by accessing or using our Services. You understand and agree that we will treat
-              your access or use of the Services as acceptance of the Terms from that point onwards.
+              {termsT?.p7}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              You should print off or save a local copy of the Terms for your records.
+              {termsT?.p8}
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">3. {termsT?.changesTerms}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              We amend these Terms from time to time, for instance when we update the functionality of our Services,
-              when we combine multiple apps or services operated by us or our affiliates into a single combined service
-              or app, or when there are regulatory changes. We will use commercially reasonable efforts to generally
-              notify all users of any material changes to these Terms, such as through a notice on our Platform,
-              however, you should look at the Terms regularly to check for such changes. We will also update the "Last
-              Updated" date at the top of these Terms, which reflect the effective date of such Terms. Your continued
-              access or use of the Services after the date of the new Terms constitutes your acceptance of the new Terms
-              even if you were not notified. If you do not agree to the new Terms, you must stop accessing or using the
-              Services.
+              {termsT?.p9}
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">4. {termsT?.yourAccount}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              To access or use some of our Services, you must create an account with us. When you create this account,
-              you must provide accurate and up-to-date information. It is important that you maintain and promptly
-              update your details and any other information you provide to us, to keep such information current and
-              complete.
+              {termsT?.p10}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              It is important that you keep your account password confidential and that you do not disclose it to any
-              third party. If you know or suspect that any third party knows your password or has accessed your account,
-              you must notify us immediately at support@telefanz.com.
+              {termsT?.p11}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
-              You agree that you are solely responsible (to us and to others) for the activity that occurs under your
-              account.
+              {termsT?.p12}
             </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               We reserve the right to disable your user account at any time, including if you have failed to comply with
@@ -113,6 +77,9 @@ export default function TermsOfServicePage() {
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">5. {termsT?.accessUse}</h3>
+            <p className="text-white/80 leading-relaxed mb-4 text-justify">
+              {termsT?.p13}
+            </p>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
               Your access to and use of the Services is subject to these Terms and all applicable laws and regulations.
               You may not:
@@ -210,6 +177,9 @@ export default function TermsOfServicePage() {
 
             <h3 className="text-xl font-semibold mt-8 mb-4">6. {termsT?.intellectualProperty}</h3>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">
+              {termsT?.p14}
+            </p>
+            <p className="text-white/80 leading-relaxed mb-4 text-justify">
               We respect intellectual property rights and ask you to do the same. As a condition of your access to and
               use of the Services, you agree not to use the Services to infringe on any intellectual property rights. We
               reserve the right, with or without notice, at any time and in our sole discretion to block access to
@@ -218,6 +188,9 @@ export default function TermsOfServicePage() {
             </p>
 
             <h3 className="text-xl font-semibold mt-8 mb-4">7. {termsT?.content}</h3>
+            <p className="text-white/80 leading-relaxed mb-4 text-justify">
+              {termsT?.p15}
+            </p>
 
             <h4 className="text-lg font-semibold mt-6 mb-3 text-purple-300">A. Telefanz Content</h4>
             <p className="text-white/80 leading-relaxed mb-4 text-justify">

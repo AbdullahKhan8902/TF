@@ -22,7 +22,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (savedLanguage && ['en', 'ar', 'ru', 'zh'].includes(savedLanguage)) {
       setLanguageState(savedLanguage)
       document.documentElement.lang = savedLanguage
-      document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr'
+      // Keep layout direction consistent (LTR) for all languages
+      document.documentElement.dir = 'ltr'
     }
   }, [])
 
@@ -30,7 +31,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setLanguageState(newLanguage)
     localStorage.setItem('language', newLanguage)
     document.documentElement.lang = newLanguage
-    document.documentElement.dir = newLanguage === 'ar' ? 'rtl' : 'ltr'
+    // Always use LTR to keep the same viewport/layout across languages
+    document.documentElement.dir = 'ltr'
   }
 
   // Only render children after hydration to prevent mismatch
